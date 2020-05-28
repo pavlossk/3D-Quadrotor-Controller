@@ -1,0 +1,59 @@
+Code explanation steps:
+
+
+- Body rate control
+        1. compute current body rate error in all direction (r, p, and q)
+        2. compute angular acceleration 
+        3. generate the rotational moment
+        4. constrain the desired moment within a set of bounds (-MAX_TORQUE, MAX_TORQUE)
+
+- Lines 97 to 117 in QuadControl.cpp
+
+- Roll pitch control
+
+        1. get collective acceleration: c = -thrust_cmd / DRONE_MASS
+        2. actual portion of acceleration on x and y direction from rotation matrix
+        3. target portion of acceleration on x, y and z direction: b_c = acceleration_cmd / c
+        4. compute current position error of b term:  b_err = b_c - b
+        5. compute target change rate of b term: b_dot_c = self.k_p_euler_angles[:2][::-1] * b_err
+        6. r = np.array([[R[1, 0], -R[0, 0]],
+                        [R[1, 1], -R[0, 1]]],
+                        dtype=np.float)
+        7. generate the target roll and pitch rate with matrix multiplication: pq_c = np.dot(r, b_dot_c) / R[2, 2]
+
+- Lines 125 to 168 in QuadControl.cpp
+
+- Altitude control
+
+        1. get actual b term on z-direction from a rotation matrix
+        2. compute current position error in z-direction
+        3. compute current vertical error in z-direction
+        4. compute target acceleration in z-direction
+        5. generate the thrust command 
+        6. constrain the thrust command within a set of bounds (0.1, MAX_THRUST)
+
+- Lines 170 to 207 in QuadControl.cpp
+
+- Lateral position control
+
+        1. compute current position error in all direction in world frame
+        2. compute current velocity error in all direction in world frame	
+        3. generate the target acceleration command 
+        4. constrain the target acceleration within a set of bounds (-maxAccelXY, maxAccelXY)
+
+- Lines 210 to 251 in QuadControl.cpp
+
+- Yaw control
+
+        1. compute current yaw error
+        2. generate the target yaw rate command
+
+- Lines 255 to 274 in QuadControl.cpp
+
+
+
+Simulator Flight Execution: 
+
+Scenario 2
+
+![alt text](http://prntscr.com/spghrf)
