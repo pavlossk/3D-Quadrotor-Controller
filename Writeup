@@ -56,4 +56,32 @@ Simulator Flight Execution:
 
 Scenario 2
 
-![alt text](http://prntscr.com/spghrf)
+![alt text](https://github.com/pavlossk/3D-Quadrotor-Controller/blob/master/scenario2.png?raw=true)
+
+PASS: ABS(Quad.Roll) was less than 0.025000 for at least 0.750000 seconds
+PASS: ABS(Quad.Omega.X) was less than 2.500000 for at least 0.750000 seconds
+
+
+Scenario 3
+
+![alt text](https://github.com/pavlossk/3D-Quadrotor-Controller/blob/master/scenario3.png?raw=true)
+
+PASS: ABS(Quad1.Pos.X) was less than 0.100000 for at least 1.250000 seconds
+PASS: ABS(Quad2.Pos.X) was less than 0.100000 for at least 1.250000 seconds
+PASS: ABS(Quad2.Yaw) was less than 0.100000 for at least 1.000000 seconds
+
+Scenario 4
+
+![alt text](https://github.com/pavlossk/3D-Quadrotor-Controller/blob/master/scenario4.png?raw=true)
+
+PASS: ABS(Quad1.PosFollowErr) was less than 0.100000 for at least 1.500000 seconds
+PASS: ABS(Quad2.PosFollowErr) was less than 0.100000 for at least 1.500000 seconds
+PASS: ABS(Quad3.PosFollowErr) was less than 0.100000 for at least 1.500000 seconds
+
+Scenario 5
+
+![alt text](https://github.com/pavlossk/3D-Quadrotor-Controller/blob/master/scenario5.png?raw=true)
+
+PASS: ABS(Quad2.PosFollowErr) was less than 0.250000 for at least 3.000000 seconds
+
+
